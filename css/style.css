@@ -1,0 +1,13 @@
+.brand{
+    
+}
+
+@media (max-width: 991px){
+    .brand{
+        font-size: 20px !important;
+    }
+
+    .exercise-img{
+        
+    }
+}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Tracker</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="grey lighten-4">
+    <header>
+        <!-- Nav for bigger screens -->
+        <nav class="z-depth-0 grey darken-4">
+            <div class="nav-wrapper container">
+                <a href="#" class="brand-logo white-text brand" aria-label="Task Manager Home"> <i class="medium material-icons white-text">fitness_center</i> Workout Tracker</a>
+
+                <!-- Hamburger menu for smaller screens -->
+                <a href="#" data-target="mobile-menu" class="sidenav-trigger right hide-on-large-and-up black-text"><i class="material-icons white-text">menu</i></a>
+
+                <!-- Navbar links for large screens -->
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="/" class="waves-effect white-text">Home</a></li>
+                    <li><a href="/pages/about.html" class="waves-effect white-text">Excercises</a></li>
+                    <!-- <li><a href="/pages/contact.html" class="waves-effect white-text">Contact</a></li> -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside>
+        <ul class="sidenav" id="mobile-menu">
+            <li><a href="/" class="subheader">Workout Tracker</a></li>
+            <li><a href="index.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">home_outline</i>Home</a></li>
+            <li><a href="excercises.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">fitness_center</i>Excercises</a></li>
+            <!-- <li><a href="/pages/contact.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">mail_outline</i> Contact</a></li> -->
+        </ul>
+    </aside>
+
+    <main class="center-align">
+        <div class="container">
+            <h1 >Start Workout</h1>
+
+
+            <!-- Modal Trigger -->
+            <a href="#track" class="waves-effect waves-light btn cyan lighten-1 modal-trigger"><i class="material-icons left">playlist_add</i>Track a Workout</a>
+
+            <!-- Modal Structure -->
+            <div id="track" class="modal bottom-sheet">
+                <div class="modal-content">
+                    <h4 class="left-align">Evening Workout</h4>
+                    <p class="left-align">Time</p>
+                    <p class="left-align">Notes</p>
+
+                    <a href="#add" class="center-align waves-effect waves-light btn cyan lighten-1 modal-trigger">Add Excercise</a>
+
+                </div>
+                <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                </div>
+            </div>
+            
+            
+        </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="C:\Users\Mizz\Desktop\FHSU\Fall 2024\Web Dev\WorkoutTracker\js\materialize.min.js"></script>
+    <script src="C:\Users\Mizz\Desktop\FHSU\Fall 2024\Web Dev\WorkoutTracker\js\ui.js"></script>
+</body>
+</html>

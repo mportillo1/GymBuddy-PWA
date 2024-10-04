@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
      M.Modal.init(elems, options);
 });
 
+$('.dropdown-trigger').dropdown();
 
 if("serviceWorker" in navigator){
     navigator.serviceWorker

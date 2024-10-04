@@ -66,9 +66,9 @@
                     <p class="left-align">Notes</p>
 
 
-                    <div class="row">
+                    <div class="row log-workout-name">
                         <div class="col s12">
-                            <p>Arnold Press</p>
+                            <h5 class="blue-text">Arnold Press</h5>
                         </div>
                     </div>
                     
@@ -92,13 +92,13 @@
                             <p class="">1</p>                            
                         </div>
                         <div class="input-field col s4">
-                            <input value="5 reps" id="first_name2" type="text" class="validate">
+                            <input placeholder="5 reps" id="first_name2" type="text" class="validate">
                         </div>
-                        <div class="col s3">
-                            <p class="">20lbs</p>
+                        <div class="input-field col s3">
+                            <input placeholder="20 lbs" id="first_name2" type="text" class="validate">
                         </div>
-                        <div class="col s3">
-                            <p class="">Hard</p>
+                        <div class="input-field col s3">
+                            <a class='dropdown-trigger grey white-text btn' href='#' data-target='difficulty'><i class="material-icons left">arrow_drop_down</i> Difficulty</a>
                         </div>
                     </div>
 
@@ -206,6 +206,15 @@
                 <a href="#!" class="modal-close waves-effect waves-green green white-text btn-flat btn-flat">Done</a>
                 </div>
             </div>
+
+            <!-- Dropdown Structure -->
+            <ul id='difficulty' class='dropdown-content'>
+                <li><a href="#!" class="green white-text">Easy</a></li>
+                <li><a href="#!" class="yellow">Medium</a></li>
+                <li><a href="#!" class="orange lighten-1 white-text">Hard</a></li>
+                <li><a href="#!" class="orange darken-4 white-text">Max Effort</a></li>
+                <li><a href="#!" class="red darken-4 white-text">Failed</a></li>
+            </ul>
             
             
         </div>

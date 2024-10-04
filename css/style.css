@@ -49,6 +49,9 @@ nav ul a:hover{
 .log .log-header{
     font-weight: 600;
 }
+.log-workout-name{
+    margin-bottom: 0px;
+}
 
  /* label underline focus color */
  .input-field input[type=text] {
@@ -59,6 +62,24 @@ nav ul a:hover{
   .input-field{
     margin-top: 1px !important;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media (max-width:1199px){
     p{

@@ -12,4 +12,4 @@ GymBuddy is a progressive web application (PWA) designed to help users track the
 1. **Clone the Repository**:
    - Run the following command in your terminal to clone the project:
    ```bash
-   https://github.com/mportillo1/WorkoutTracker.git
+   git clone https://github.com/mportillo1/WorkoutTracker.git

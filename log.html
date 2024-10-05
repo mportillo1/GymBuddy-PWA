@@ -28,7 +28,7 @@
                 <ul class="right hide-on-med-and-down">
                     <li><a href="index.html" class="waves-effect white-text">Home</a></li>
                     <li><a href="log.html" class="waves-effect white-text">Workout Tracker</a></li>
-                    <li><a href="excercises.html" class="waves-effect white-text">Excercises</a></li>
+                    <li><a href="excercises.html" class="waves-effect white-text">Exercise Database</a></li>
                     <!-- <li><a href="/pages/contact.html" class="waves-effect white-text">Contact</a></li> -->
                 </ul>
             </div>
@@ -40,7 +40,7 @@
             <li><a href="/" class="subheader">Workout Tracker</a></li>
             <li><a href="index.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">home_outline</i>Home</a></li>
             <li><a href="log.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">playlist_add</i>Workout Tracker</a></li>
-            <li><a href="excercises.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">fitness_center</i>Excercises</a></li>
+            <li><a href="excercises.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">fitness_center</i>Exercise Database</a></li>
             <!-- <li><a href="/pages/contact.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">mail_outline</i> Contact</a></li> -->
         </ul>
     </aside>
@@ -52,20 +52,28 @@
     
         </section>
 
-        <div class="container">
+        <div class="container log-container" style="padding-bottom: 150px;">
             <h1 >Start Workout</h1>
 
 
             <!-- Modal Trigger -->
             <a href="#track" class="waves-effect waves-light btn light-blue darken-4 modal-trigger"><i class="material-icons left">playlist_add</i>Track a Workout</a>
             <br>
-            <br>
-            <!-- Modal Structure -->
-            <div id="track" class="modal bottom-sheet">
-                <div class="modal-content left-align">
-                    <h4 class="left-align">Evening Workout</h4>
-                    <p class="left-align">Time</p>
-                    <p class="left-align">Notes</p>
+            <br>           
+            <br>    
+        </div>
+
+        <!-- Modal Structure Track Workout-->
+        <div id="track" class="modal bottom-sheet">
+            <div class="modal-content left-align">
+                <!-- <div class="container"> -->
+                    <h4 class="left-align">Workout Log</h4>                    
+                    <div class="input-field col s4">
+                        <input type="text" id="workoutDate" class="datepicker">
+                        <label for="workoutDate">Date</label>
+                    </div>
+                    
+                    <!-- <p class="left-align">Notes</p> -->
 
 
                     <div class="row log-workout-name">
@@ -75,7 +83,7 @@
                     </div>
                     
                     <div class="row log">
-                        <div class="col s2">
+                        <div class="col s1">
                             <p class="log-header">Set</p>                            
                         </div>
                         <div class="col s4">
@@ -84,13 +92,13 @@
                         <div class="col s3">
                             <p class="log-header">Weight</p>
                         </div>
-                        <div class="col s3">
+                        <div class="col s4">
                             <p class="log-header">Difficulty</p>
                         </div>
                     </div>
 
                     <div class="row log">
-                        <div class="col s2">
+                        <div class="col s1">
                             <p class="">1</p>                            
                         </div>
                         <div class="input-field col s4">
@@ -99,8 +107,8 @@
                         <div class="input-field col s3">
                             <input placeholder="20 lbs" id="first_name2" type="text" class="validate">
                         </div>
-                        <div class="input-field col s3">
-                            <a class='dropdown-trigger grey white-text btn' href='#' data-target='difficulty'><i class="material-icons left">arrow_drop_down</i> Difficulty</a>
+                        <div class="input-field col s4">
+                            <a class='dropdown-trigger grey white-text btn' href='#' data-target='difficulty'><i class="material-icons small left">arrow_drop_down</i></a>
                         </div>
                     </div>
 
@@ -114,11 +122,12 @@
                             <a href="#!" class="modal-close waves-effect waves-green green white-text btn-flat">Finish</a>
                         </div>
                     </div>
-
-                </div>
+                <!-- </div> -->
             </div>
+        </div>
 
-            <!-- Modal Structure -->
+
+            <!-- Modal Structure Excersice Database-->
             <div id="add" class="modal">
                 <div class="modal-content">
                     <div class="container">
@@ -200,8 +209,7 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
-                        
+                        <br>                        
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -217,11 +225,36 @@
                 <li><a href="#!" class="orange darken-4 white-text">Max Effort</a></li>
                 <li><a href="#!" class="red darken-4 white-text">Failed</a></li>
             </ul>
-            
-            
-        </div>
+
+
+
+
+        <!-- Footer Section -->
+        <footer class="page-footer grey darken-4">
+            <div class="container">
+              <div class="row">
+                <div class="col l6 s12">
+                  <h5 class="white-text"><i class="small material-icons white-text">fitness_center</i> GymBuddy</h5>
+                  <p class="grey-text text-lighten-4">Achieve your goals and track your progress.</p>
+                </div>
+                <div class="col l4 offset-l2 s12">
+                  <h5 class="white-text">Links</h5>
+                  <ul>
+                    <li><a href="log.html" class="waves-effect grey-text text-lighten-3">Workout Tracker</a></li>
+                    <li><a href="excercises.html" class="waves-effect grey-text text-lighten-3">Exercise Database</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              <div class="container">
+              © 2024 GymBuddy
+              </div>
+            </div>
+          </footer>
+
     </main>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js\jquery-3.7.1.min.js" ></script>
     <script src="js\materialize.min.js"></script>
     <script src="js\ui.js"></script>
 </body>

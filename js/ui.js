@@ -5,17 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Modal
     var elems = document.querySelectorAll('.modal');
-     M.Modal.init(elems, options);
+     M.Modal.init(elems);
 });
 
 $('.dropdown-trigger').dropdown();
 
-if("serviceWorker" in navigator){
-    navigator.serviceWorker
-    .register("/serviceworker.js")
-    .then(req => console.log("Service Worker Registered", req))
-    .catch(err => console.log("Service Worker registration failed.", err));
-}
+
 
   $(document).ready(function(){
     $('.modal').modal();
@@ -27,3 +22,17 @@ if("serviceWorker" in navigator){
     indicators: true,
     duration: 200
   });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.datepicker');
+    var instances = M.Datepicker.init(elems);
+  }); 
+
+
+
+if("serviceWorker" in navigator){
+    navigator.serviceWorker
+    .register("\serviceworker.js")
+    .then(req => console.log("Service Worker Registered", req))
+    .catch(err => console.log("Service Worker registration failed.", err));
+}

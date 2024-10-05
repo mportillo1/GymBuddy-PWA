@@ -17,6 +17,8 @@ nav ul a:hover{
     width: 100px;
 }
 
+
+
 /*Hero Content*/
 .hero{
     position: relative;
@@ -35,12 +37,12 @@ nav ul a:hover{
 }
 
 .main-banner{
-    background: url("../img/karsten-winegeart-0Wra5YYVQJE-unsplash.jpg") center center/cover no-repeat local;
+    background: url("../img/victor-freitas-WvDYdXDzkhs-unsplash.jpg") center center/cover no-repeat local;
     background-position: 50% 70%;
 }
 
 .exercise-banner{
-    background: url("../img/victor-freitas-WvDYdXDzkhs-unsplash.jpg") center center/cover no-repeat local;
+    background: url("../img/scott-webb-Vn39uEkX00s-unsplash.jpg") center center/cover no-repeat local;
     background-position: 50% 50%;
 }
 
@@ -94,7 +96,7 @@ nav ul a:hover{
 }
 
 /*==================================================
-5. CATEGORY
+     CATEGORY Section
 ==================================================*/
 .section.home-category {
     
@@ -148,7 +150,9 @@ nav ul a:hover{
     font-weight: 600;
     font-size: 10px; }
 
-/* Log Section */
+/*==================================================
+    Log Section
+==================================================*/
 .log .log-header{
     font-weight: 600;
 }
@@ -158,31 +162,36 @@ nav ul a:hover{
 
  /* label underline focus color */
  .input-field input[type=text] {
-    border-bottom: none !important;
-    box-shadow: none;
+    /* border-bottom: none !important; */
+    /* box-shadow: none; */
   }
 
   .input-field{
     margin-top: 1px !important;
   }
 
+  .modal-content .datepicker{
+    width: 30% !important;
+  }
 
 
 
+/*==================================================
+    Media Queries
+==================================================*/
+@media(min-width:1200px){
+    .log-container{
+        padding-bottom: 150px;
+    }
+    .section.home-category .content{
+        padding-bottom: 50% !important;
 
+      }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+@media(min-wdth:992px){
+    
+}
 
 @media (max-width:1199px){
     p{
@@ -215,9 +224,11 @@ nav ul a:hover{
 
     /*Hero*/
     .hero{
-        min-height: 500px;
+        min-height: 300px;
     }
 
+
+    ::-webkit-scrollbar { display: none; }
     
 }
 

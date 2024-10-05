@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Workout Tracker</title>
+    <title>GymBuddy</title>
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,7 +19,7 @@
         <!-- Nav for bigger screens -->
         <nav class="z-depth-0 grey darken-4">
             <div class="nav-wrapper container">
-                <a href="#" class="brand-logo white-text brand" aria-label="Task Manager Home"> <i class="medium material-icons white-text">fitness_center</i> Workout Tracker</a>
+                <a href="#" class="brand-logo white-text brand" aria-label="Task Manager Home"> <i class="medium material-icons white-text">fitness_center</i> GymBuddy</a>
 
                 <!-- Hamburger menu for smaller screens -->
                 <a href="#" data-target="mobile-menu" class="sidenav-trigger right hide-on-large-and-up white-text"><i class="material-icons white-text">menu</i></a>
@@ -27,6 +27,7 @@
                 <!-- Navbar links for large screens -->
                 <ul class="right hide-on-med-and-down">
                     <li><a href="index.html" class="waves-effect white-text">Home</a></li>
+                    <li><a href="log.html" class="waves-effect white-text">Workout Tracker</a></li>
                     <li><a href="excercises.html" class="waves-effect white-text">Excercises</a></li>
                     <!-- <li><a href="/pages/contact.html" class="waves-effect white-text">Contact</a></li> -->
                 </ul>
@@ -38,186 +39,62 @@
         <ul class="sidenav" id="mobile-menu">
             <li><a href="/" class="subheader">Workout Tracker</a></li>
             <li><a href="index.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">home_outline</i>Home</a></li>
+            <li><a href="log.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">playlist_add</i>Workout Tracker</a></li>
             <li><a href="excercises.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">fitness_center</i>Excercises</a></li>
             <!-- <li><a href="/pages/contact.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">mail_outline</i> Contact</a></li> -->
         </ul>
     </aside>
 
     <main class="center-align">
-        <section class="hero main-banner">
-            <div class="hero-content">
+
+        <div class="carousel home_carousel carousel-slider center">
+            <div class="carousel-item red white-text first-carousel" href="#one!">
+              <h1>Track Your Fitness</h1>
+              <p class="white-text">Achieve your goals and track your progress</p>
             </div>
-    
-        </section>
-
-        <div class="container">
-            <h1 >Start Workout</h1>
-
-
-            <!-- Modal Trigger -->
-            <a href="#track" class="waves-effect waves-light btn light-blue darken-4 modal-trigger"><i class="material-icons left">playlist_add</i>Track a Workout</a>
-            <br>
-            <br>
-            <!-- Modal Structure -->
-            <div id="track" class="modal bottom-sheet">
-                <div class="modal-content left-align">
-                    <h4 class="left-align">Evening Workout</h4>
-                    <p class="left-align">Time</p>
-                    <p class="left-align">Notes</p>
-
-
-                    <div class="row log-workout-name">
-                        <div class="col s12">
-                            <h5 class="blue-text">Arnold Press</h5>
-                        </div>
-                    </div>
-                    
-                    <div class="row log">
-                        <div class="col s2">
-                            <p class="log-header">Set</p>                            
-                        </div>
-                        <div class="col s4">
-                            <p class="log-header">Repetitions</p>
-                        </div>
-                        <div class="col s3">
-                            <p class="log-header">Weight</p>
-                        </div>
-                        <div class="col s3">
-                            <p class="log-header">Difficulty</p>
-                        </div>
-                    </div>
-
-                    <div class="row log">
-                        <div class="col s2">
-                            <p class="">1</p>                            
-                        </div>
-                        <div class="input-field col s4">
-                            <input placeholder="5 reps" id="first_name2" type="text" class="validate">
-                        </div>
-                        <div class="input-field col s3">
-                            <input placeholder="20 lbs" id="first_name2" type="text" class="validate">
-                        </div>
-                        <div class="input-field col s3">
-                            <a class='dropdown-trigger grey white-text btn' href='#' data-target='difficulty'><i class="material-icons left">arrow_drop_down</i> Difficulty</a>
-                        </div>
-                    </div>
-
-                    <div class="row center-align">
-                        <div class="col s12">
-                            <a href="#add" class="center-align waves-effect waves-light btn light-blue darken-4 modal-trigger">Add Excercise</a>
-                        </div>
-                    </div>
-                    <div class="row center-align">
-                        <div class="col s12">
-                            <a href="#!" class="modal-close waves-effect waves-green green white-text btn-flat">Finish</a>
-                        </div>
-                    </div>
-
-                </div>
+            <div class="carousel-item amber white-text second-carousel" href="#two!">
+              <h1>Log Your Workouts</h1>
+              <p class="white-text">Monitor progress and stay motivated</p>
             </div>
-
-            <!-- Modal Structure -->
-            <div id="add" class="modal">
-                <div class="modal-content">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col s12">
-                                <h1 >Exercises</h1>
-                            </div>
-                        </div>
-                        <!-- A -->
-                        <div class="row">
-                            <div class="col s12">
-                                <p>A</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="divider"></div>
-                            <div class="section">
-                                <div class="col s4 m1">
-                                    <img class="exercise-img" src="img/mid.png">
-                                </div>
-                                <div class="col s6 m9 offset-m1">
-                                    <h5>Ab Wheel</h5>
-                                    <p>Core</p>
-                                </div>
-                                <div class="col s1 m1 right-align">
-                                    <i class="material-icons">check_box_outline_blank</i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="divider"></div>
-                            <div class="section">
-                                <div class="col s4 m1">
-                                    <img class="exercise-img" src="img/upper.png">
-                                </div>
-                                <div class="col s6 m9 offset-m1">
-                                    <h5>Arnold Press</h5>
-                                    <p>Shoulders</p>
-                                </div>
-                                <div class="col s1 m1 right-align">
-                                    <i class="material-icons">check_box_outline</i>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        <!-- B -->
-                        <div class="row">
-                            <div class="col s12">
-                                <p>B</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="divider"></div>
-                            <div class="section">
-                                <div class="col s4 m1">
-                                    <img class="exercise-img" src="img/chest.png">
-                                </div>
-                                <div class="col s6 m9 offset-m1">
-                                    <h5>Bench Press</h5>
-                                    <p>Chest</p>
-                                </div>
-                                <div class="col s1 m1 right-align">
-                                    <i class="material-icons">check_box_outline_blank</i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="divider"></div>
-                            <div class="section">
-                                <div class="col s4 m1">
-                                    <img class="exercise-img" src="img/upper.png">
-                                </div>
-                                <div class="col s6 m9 offset-m1">
-                                    <h5>Bicep Curl</h5>
-                                    <p>Arms</p>
-                                </div>
-                                <div class="col s1 m1 right-align">
-                                    <i class="material-icons">check_box_outline_blank</i>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
-                        
-                    </div>
-                </div>
-                <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green green white-text btn-flat btn-flat">Done</a>
-                </div>
+            <div class="carousel-item amber white-text third-carousel" href="#two!">
+                <h1>Discover New Exercises</h1>
+                <p class="white-text">Explore our exercise library</p>
             </div>
-
-            <!-- Dropdown Structure -->
-            <ul id='difficulty' class='dropdown-content'>
-                <li><a href="#!" class="green white-text">Easy</a></li>
-                <li><a href="#!" class="yellow">Medium</a></li>
-                <li><a href="#!" class="orange lighten-1 white-text">Hard</a></li>
-                <li><a href="#!" class="orange darken-4 white-text">Max Effort</a></li>
-                <li><a href="#!" class="red darken-4 white-text">Failed</a></li>
-            </ul>
-            
-            
         </div>
+
+          <div class="section home-category">
+            <div class="container">
+                <div class="row icon-service">
+                    <div class="col s6">
+                        <a href="./log.html" class="icon-content">
+                            <div class="content">
+                                <div class="in-content">
+                                    <div class="in-in-content">
+                                        <i class="material-icons">playlist_add</i>
+                                        <h5>Workout Tracker</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col s6">
+                        <a href="./excercises.html" class="icon-content">
+                            <div class="content">
+                                <div class="in-content">
+                                    <div class="in-in-content">
+                                        <i class="material-icons">fitness_center</i>
+                                        <h5>Excercises</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          
+          
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js\materialize.min.js"></script>

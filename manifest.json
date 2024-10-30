@@ -1,0 +1,70 @@
+{
+    "name": "GymBuddy",
+    "short_name": "GM",
+    "description": "Track your fitness journey",
+    "start_url": "/index.html",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#f5f5f5",
+    "theme_color": "#393E46",
+    "lang": "en-US",
+    "icons": [
+        {
+            "src": "/img/icons/GymBuddyIcon512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "/img/icons/GymBuddyIcon192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "/img/icons/GymBuddyIcon40.png",
+            "type": "image/png",
+            "sizes": "40x40"
+        }
+    ],
+
+    "screenshots": [
+        {
+            "src": "/img/screenshots/wideScreenshot.png",
+            "type": "image/png",
+            "sizes": "1536x905",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/img/screenshots/mobileScreenshot.png",
+            "type": "image/png",
+            "sizes": "519x724"
+        }
+    ],
+
+    "shortcuts": [
+        {
+            "name": "Track Workout",
+            "short_name": "Track",
+            "description": "Quickly track a workout",
+            "url": "/log",
+            "icons":[
+                {
+                    "src": "/img/screenshots/trackScreenshot.png",
+                    "sizes": "499x909"
+                }
+            ]
+        },
+        {
+            "name": "Exercise Database",
+            "short_name": "Database",
+            "description": "Browse our excercise database",
+            "url": "/excercises",
+            "icons":[
+                {
+                    "src": "/img/screenshots/databaseScreenshot.png",
+                    "sizes": "496x875"
+                }
+            ]
+        }
+    ]
+}

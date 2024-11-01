@@ -17,6 +17,11 @@ nav ul a:hover{
     width: 100px;
 }
 
+.logo{
+    margin: 7px 7px 0 0;
+    display: inline-block;
+}
+
 
 
 /*Hero Content*/
@@ -221,6 +226,8 @@ nav ul a:hover{
         width: 70px;
         height: auto;
     }
+
+    
 
     /*Hero*/
     .hero{

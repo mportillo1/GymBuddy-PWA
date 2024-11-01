@@ -1,4 +1,4 @@
-const CACHE_NAME = "task-manager-v1";
+const CACHE_NAME = "task-manager-v2";
 
 const ASSETS_TO_CACHE = [
     "/",
@@ -59,7 +59,7 @@ self.addEventListener("fetch", (event) => {
                 return networkResponse;
             } catch(error){
                 console.error("Fetch failed, returning offline page: ", error);
-                //Optionallyu return an offline page here if available in the cache
+                //Optionally return an offline page here if available in the cache
             }
         })()
     );

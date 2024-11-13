@@ -179,7 +179,10 @@ nav ul a:hover{
     width: 30% !important;
   }
 
-
+.workout-icon{
+    max-width: 25%;
+    height: auto;
+}
 
 /*==================================================
     Media Queries
@@ -227,11 +230,20 @@ nav ul a:hover{
         height: auto;
     }
 
+    .small-center-align{
+        text-align: center;
+    }
+
     
 
     /*Hero*/
     .hero{
         min-height: 300px;
+    }
+
+    /* Workout Log */
+    .workout-icon{
+        max-height: 5rem;
     }
 
 

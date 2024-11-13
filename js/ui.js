@@ -114,4 +114,12 @@ async function loadWoroutLog(){
 //Display workout log using existing HTML structure
 function displayWorkoutLog(workoutLog){
   const workoutLogContainer = document.querySelector(".workoutLogs");
+
+  workoutLogContainer.insertAdjacentHTML("beforeend", oneSetHtml);
+
+    // Attach delete event listener
+    const deleteButton = taskContainer.querySelector(
+      `[data-id="${workoutLog.id}"] .workoutLog-delete`
+    );
+    deleteButton.addEventListener("click", () => deleteWorkoutLog(workoutLog.id));
 }

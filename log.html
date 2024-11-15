@@ -51,7 +51,7 @@
             <div class="hero-content"></div>    
         </section>
 
-        <div class="container log-container" style="padding-bottom: 150px;">
+        
             <h1 >Start Workout</h1>
 
 
@@ -60,43 +60,13 @@
             <br>
             <br>           
             <br>    
-
-            <!-- <div class="card-panel white row left-align">
-                <div class="col s2" >
-                    <img src="img/chest.png"  class="responsive-img" alt="Workout Icon">
-                </div>
-                <div class="workout-details col s8">
-                    <h5 class="workout-title black-text">Bench Press</h5>
-                    <div class="workout-description">Chest</div>
-                </div>
-                <div class="col s2 right-align">
-                    <button class="task-delete btn-flat" aria-label="Delete Task">
-                        <i class="material-icons black-text-darken-1">delete_outline</i>
-                    </button>
-                </div>
-            </div> -->
-<!-- 
-            <div class="card-panel white row left-align small-center-align">
-                <div class="col s12 m2" >
-                    <img src="img/chest.png"  class="responsive-img workout-icon" alt="Workout Icon">
-                </div>
-                <div class="workout-details col s12 m8">
-                    <h5 class="workout-title black-text">Bench Press</h5>
-                    <div class="workout-description">Chest</div>
-                </div>
-                <div class="col s12 m2 right-align small-center-align">
-                    <button class="task-delete btn-flat" aria-label="Delete Task">
-                        <i class="material-icons black-text-darken-1">delete_outline</i>
-                    </button>
-                </div>
-            </div> -->
-            
+            <div class="container workoutLogs" >
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 m4">
                   <div class="card">
-                    <div class="col s12" >
+                    <!-- <div class="col s12" >
                         <img src="img/chest.png"  class="workout-icon" alt="Workout Icon">
-                    </div>
+                    </div> -->
                     <div class="col s12" >
                         <span class="card-title workout-name">Bench Press</span>
                         <div class="workout-description">Chest</div> 
@@ -104,84 +74,72 @@
                     </div>
                     <div class="card-content">
                       <div class="workout-sets">                        
-                        <table>
+                        <table class="table-responsive2 center-align">
                             <thead>
                             <tr>
                                 <th>Set</th>
-                                <th>Repetitions</th>
+                                <th>Reps</th>
                                 <th>Weight</th>
                                 <th>Difficulty</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>10</td>
-                                <td>145</td>
-                                <td>Hard</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>9</td>
-                                <td>145</td>
-                                <td>Max Effort</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>9</td>
-                                <td>140</td>
-                                <td>Failed</td>
-                            </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>10</td>
+                                    <td>145</td>
+                                    <td>Hard</td>
+                                </tr>
                             </tbody>
                         </table>
                       </div>                      
                     </div>
                     <div class="card-action">
-                        <button class="task-delete btn-flat" aria-label="Delete Task">
+                        <button class="workout-delete btn-flat" aria-label="Delete Workout">
                             <i class="material-icons red-text large">delete</i>
                         </button>
-                        <button class="task-delete btn-flat" aria-label="Delete Task">
+                        <button class="workout-edit btn-flat" aria-label="Edit Workout">
                             <i class="material-icons light-blue-text text-darken-4 large">edit</i>
                         </button>
                     </div>
                   </div>
                 </div>
-              </div>
+
+              </div> 
  
 
-        </div>
+        </div> <!--End Container-->
 
         <!-- Modal Structure Track Workout-->
         <div id="track" class="modal bottom-sheet">
             <div class="modal-content left-align">
-                <!-- <div class="container"> -->
-                    <h4 class="left-align">Workout Log</h4>                    
-                    <div class="input-field col s4">
-                        <input placeholder="Date" type="text" id="workoutDate" class="datepicker">
-                        <!-- <label for="workoutDate">Date</label> -->
+                <h4 class="left-align">Workout Log</h4>                    
+                <div class="input-field col s4">
+                    <input placeholder="Date" type="text" id="workoutDate" class="datepicker">
+                </div>
+
+                <div class="input-field col s4">        
+                    <input placeholder="Workout Name" id="workoutName" type="text" class="validate">
+                </div>
+
+                <div class="input-field col s4">        
+                    <input placeholder="Workout Description (Chest/Cardio/Legs)" id="workoutDescription" type="text" class="validate">
+                </div>
+
+                    
+                <div class="row log">
+                    <div class="col s1">
+                        <p class="log-header">Set</p>                            
                     </div>
-                    
-                    <!-- <p class="left-align">Notes</p> -->
-
-
-                        <div class="input-field col s4">        
-                            <input placeholder="Workout Name" id="first_name2" type="text" class="validate">
-                        </div>
-
-                    
-                    <div class="row log">
-                        <div class="col s1">
-                            <p class="log-header">Set</p>                            
-                        </div>
-                        <div class="col s4">
-                            <p class="log-header">Repetitions</p>
-                        </div>
-                        <div class="col s3">
-                            <p class="log-header">Weight</p>
-                        </div>
-                        <div class="col s4">
-                            <p class="log-header">Difficulty</p>
-                        </div>
+                    <div class="col s4">
+                        <p class="log-header">Repetitions</p>
+                    </div>
+                    <div class="col s3">
+                        <p class="log-header">Weight</p>
+                    </div>
+                    <div class="col s4">
+                        <p class="log-header">Difficulty</p>
+                    </div>
                     </div>
 
                     <div class="row log">
@@ -189,25 +147,34 @@
                             <p class="">1</p>                            
                         </div>
                         <div class="input-field col s4">
-                            <input placeholder="5 reps" id="first_name2" type="text" class="validate">
+                            <input placeholder="5 reps" id="repetitions" type="text" class="validate">
                         </div>
                         <div class="input-field col s3">
-                            <input placeholder="20 lbs" id="first_name2" type="text" class="validate">
+                            <input placeholder="20 lbs" id="weight" type="text" class="validate">
                         </div>
                         <div class="input-field col s4">
-                            <a class='dropdown-trigger grey white-text btn' href='#' data-target='difficulty'><i class="material-icons small left">arrow_drop_down</i></a>
+                            <div class="input-field col s12">
+                                <select id="diffSelect">
+                                  <option value="" disabled selected></option>
+                                  <option value="Easy">Easy</option>
+                                  <option value="Medium">Medium</option>
+                                  <option value="Hard">Hard</option>
+                                  <option value="Max Effort">Max Effort</option>
+                                  <option value="Failed">Failed</option>
+                                </select>                        
+                            </div>
                         </div>
                     </div>
                     
 
-                    <div class="row center-align">
+                    <!-- <div class="row center-align">
                         <div class="col s12">
                             <a href="#add" class="center-align waves-effect waves-light btn  purple lighten-2 modal-trigger">Add Set</a>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="row center-align">
                         <div class="col s12">
-                            <a href="#add" class="center-align waves-effect waves-light btn light-blue darken-4 modal-trigger" id="form-action-btn">Add Excercise</a>
+                            <a href="#add" class="center-align waves-effect waves-light btn light-blue darken-4" id="form-action-btn">Add Excercise</a>
                         </div>
                     </div>
                     <div class="row center-align">
@@ -215,21 +182,8 @@
                             <a href="#!" class="modal-close waves-effect waves-green green white-text btn-flat">Finish</a>
                         </div>
                     </div>
-                <!-- </div> -->
             </div>
         </div>
-
-            <!-- Dropdown Structure -->
-            <ul id='difficulty' class='dropdown-content'>
-                <li><a href="#!" class="green white-text">Easy</a></li>
-                <li><a href="#!" class="yellow">Medium</a></li>
-                <li><a href="#!" class="orange lighten-1 white-text">Hard</a></li>
-                <li><a href="#!" class="orange darken-4 white-text">Max Effort</a></li>
-                <li><a href="#!" class="red darken-4 white-text">Failed</a></li>
-            </ul>
-
-
-
 
         <!-- Footer Section -->
         <footer class="page-footer grey darken-4">
@@ -258,6 +212,7 @@
     </main>
     <script src="js\jquery-3.7.1.min.js" ></script>
     <script src="js\materialize.min.js"></script>
-    <script src="js\ui.js"></script>
+    <script src="js\workoutCard.js"></script>
+    <script type="module" src="js\ui.js"></script>
 </body>
 </html>

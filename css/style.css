@@ -1,3 +1,18 @@
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #ccc; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #393E46 ; 
+    border-radius: 5px;
+  }
+
 body{
     font-family: "Lato", sans-serif;
 }
@@ -22,7 +37,13 @@ nav ul a:hover{
     display: inline-block;
 }
 
-
+.table-responsive2{
+    display: inline-block;
+    /* width: 100%; */
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+ }
 
 /*Hero Content*/
 .hero{
@@ -247,7 +268,7 @@ nav ul a:hover{
     }
 
 
-    ::-webkit-scrollbar { display: none; }
+    /* ::-webkit-scrollbar { display: none; } */
     
 }
 
@@ -258,20 +279,3 @@ nav ul a:hover{
 
 
 @media (max-width:470px){}
-
-
-
-::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background: #ccc; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background: #393E46 ; 
-    border-radius: 5px;
-  }

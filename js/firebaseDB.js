@@ -75,6 +75,7 @@ export async function deleteWorkoutLogFromFirebase(id) {
 
   //update workout
   export async function updateWorkoutLogInFirebase(id, updatedData) {
+    console.log(updatedData, id);
     try {
       const workoutRef = doc(db, "workoutLog", id);
       await updateDoc(workoutRef, updatedData);

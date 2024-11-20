@@ -1,14 +1,16 @@
-const CACHE_NAME = "task-manager-v2";
+const CACHE_NAME = "task-manager-v4";
 
 const ASSETS_TO_CACHE = [
     "/",
     "/index.html",
     "/excercises.html",
     "/log.html",
+    "/serviceworker.js",
     "/css/materialize.min.css",
     "/css/style.css",
     "/js/materialize.min.js",
     "/js/ui.js",
+    "/js/firebaseDB.js",
     "/js/jquery-3.7.1.min.js",
     "/img",
 
@@ -43,46 +45,71 @@ self.addEventListener('activate', (event) =>{
 });
 
 
-self.addEventListener("fetch", (event) => {
-    event.respondWith(
-        (async function(){
-            const cachedResponse = await caches.match(event.request);
+// self.addEventListener("fetch", (event) => {
+//     event.respondWith(
+//         (async function(){
+//             const cachedResponse = await caches.match(event.request);
 
-            if(cachedResponse){
-                return cachedResponse;
-            }
+//             if(cachedResponse){
+//                 return cachedResponse;
+//             }
 
-            try{
-                const networkResponse = await fetch(event.request);
-                const cache = await caches.open(CACHE_NAME);
-                cache.put(event.request, networkResponse.clone()); //Update cache with the fetched response
-                return networkResponse;
-            } catch(error){
-                console.error("Fetch failed, returning offline page: ", error);
-                //Optionally return an offline page here if available in the cache
-            }
-        })()
-    );
-});
+//             try{
+//                 const networkResponse = await fetch(event.request);
+//                 const cache = await caches.open(CACHE_NAME);
+//                 cache.put(event.request, networkResponse.clone()); //Update cache with the fetched response
+//                 return networkResponse;
+//             } catch(error){
+//                 console.error("Fetch failed, returning offline page: ", error);
+//                 //Optionally return an offline page here if available in the cache
+//             }
+//         })()
+//     );
+// });
 
 
 
 
 //Fetch
-self.addEventListener("fetch", (event) => {
-    console.log("Service Worker: Fetching...", event.request.url);
-    event.respondWith(
-        caches.match(event.request).then((cachedResponse) => {
-            if(cachedResponse){
-                return cachedResponse;
-            }
+// self.addEventListener("fetch", (event) => {
+//     console.log("Service Worker: Fetching...", event.request.url);
+//     event.respondWith(
+//         caches.match(event.request).then((cachedResponse) => {
+//             if(cachedResponse){
+//                 return cachedResponse;
+//             }
 
-            return fetch(event.request).then((networkResponse) => {
+//             return fetch(event.request).then((networkResponse) => {
+//                 return caches.open(CACHE_NAME).then((cache) => {
+//                     cache.put(event.request, networkResponse.clone());
+//                     return networkResponse;
+//                 })
+//             })
+//         })
+//     );
+// });
+
+
+self.addEventListener("fetch", (event) => {
+    if (event.request.method === "GET") {
+      // Only handle GET requests
+      event.respondWith(
+        caches.match(event.request).then((cachedResponse) => {
+          return (
+            cachedResponse ||
+            fetch(event.request)
+              .then((networkResponse) => {
                 return caches.open(CACHE_NAME).then((cache) => {
-                    cache.put(event.request, networkResponse.clone());
-                    return networkResponse;
-                })
-            })
+                  cache.put(event.request, networkResponse.clone());
+                  return networkResponse;
+                });
+              })
+              .catch((error) => {
+                console.error("Network fetch failed:", error);
+                // Optionally, return a fallback offline page if desired
+              })
+          );
         })
-    );
-});
+      );
+    }
+  });

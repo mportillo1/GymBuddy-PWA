@@ -151,7 +151,7 @@ async function syncWorkoutLogs() {
           workoutDate: workoutLog.workoutDate,
           repetitions: workoutLog.repetitions,
           weight: workoutLog.weight,
-          difficulty: workoutLog.difficulty,
+          difficulty: workoutLog.difficulty
         };
 
         // Send the workout to Firebase and get the new ID
@@ -311,7 +311,7 @@ addWorkoutButton.addEventListener("click", async () => {
   const repInput = document.querySelector("#repetitions");
   const weightInput = document.querySelector("#weight");
   const difficultyInput = document.querySelector("#difficulty");
-
+  const workoutLogIdInput = document.querySelector("#workoutLog-id");
 
   //Theres a know issue with Materialize CSS and their getSelectedValues() where it returns previous value
   // const selectOption = document.querySelector('#diffSelect');
@@ -322,31 +322,27 @@ addWorkoutButton.addEventListener("click", async () => {
   //   selectedValues = "Not working or Empty";
   // }
 
-  const workoutLog = {
-    workoutName: workoutInput.value,
-    workoutDescription: descriptionInput.value,
-    workoutDate: dateInput.value,
-    repetitions: repInput.value,
-    weight: weightInput.value,
-    difficulty: difficultyInput.value,
+  
+  const workoutLogId = workoutLogIdInput.value; // If editing, this will have a value
+  const workoutLogData = {
+      workoutName: workoutInput.value,
+      workoutDescription: descriptionInput.value,
+      workoutDate: dateInput.value,
+      repetitions: repInput.value,
+      weight: weightInput.value,
+      difficulty: difficultyInput.value
   };
-  
-  const savedWorkoutLog = await addWorkoutLog(workoutLog); // Add workout to IndexedDB
-  
-  displayWorkoutLog(savedWorkoutLog); // Add workout to the UI
+
+  if(!workoutLogId){
+    const savedWorkoutLog = await addWorkoutLog(workoutLogData); // Add workout to IndexedDB
+    displayWorkoutLog(savedWorkoutLog); // Add workout to the UI
+  } else{
+    await editWorkoutLog(workoutLogId, workoutLogData);
+    loadWoroutLog();
+  }  
 
   // Clear input fields after adding
-  workoutInput.value = "";
-  descriptionInput.value = "";
-  dateInput.value = "";
-  repInput.value = "";
-  weightInput.value = "";
-  difficultyInput.value = "";
-
-  // Close the modal form after adding
-  var elem = document.querySelector("#track");
-  var instance = M.Modal.getInstance(elem);
-  instance.close();
+  closeForm();
 });
 
 
@@ -380,7 +376,7 @@ function openEditForm(id, workoutName, workoutDescription, workoutDate, repetiti
       workoutDate: workoutDateInput.value,
       repetitions: repetitionsInput.value,
       weight: weightInput.value,
-      difficulty: difficultyInput
+      difficulty: difficultyInput.value
     };
 
     await editWorkoutLog(id, updatedWorkoutLog);
@@ -449,3 +445,7 @@ async function checkStorageUsage(){
       }
   }
 }
+
+// Event listener to detect online status and sync
+window.addEventListener("online", syncWorkoutLogs);
+window.addEventListener("online", loadWoroutLog);

@@ -6,19 +6,25 @@ import {
   signOut 
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 // Your web app's Firebase configuration
+import { loadWoroutLog, syncWorkoutLogs } from "./ui.js";
+export let currentUser = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     const logoutBtns = document.querySelectorAll(".logout-btn");
     console.log(logoutBtns);
     onAuthStateChanged(auth, (user) => {
         if(user){
-            console.log("UserId: ", user.uid);
-            console.log("Email: ", user.email);
-            // logoutBtn.style.display = "block";
+          //User is signed in
+          currentUser = user;
+          console.log("UserId: ", user.uid);
+          console.log("Email: ", user.email);
+          // logoutBtn.style.display = "block";
 
-            logoutBtns.forEach((logoutBtn) => {
+          logoutBtns.forEach((logoutBtn) => {
               logoutBtn.style.display = "block";
-            });
+          });
+          loadWoroutLog();
+          syncWorkoutLogs();
         } else{
             console.log("No user is currently signed in");
             window.location.href = "/auth.html"

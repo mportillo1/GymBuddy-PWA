@@ -7,8 +7,6 @@ import {
 } from "./firebaseDB.js";
 
 document.addEventListener('DOMContentLoaded', function() {
-    loadWoroutLog();
-    syncWorkoutLogs();
     checkStorageUsage();
 });
 
@@ -101,7 +99,7 @@ async function editWorkoutLog(id, updatedData){
 }
 
 //Sync workout from indeDB to firebaseDB
-async function syncWorkoutLogs() {
+export async function syncWorkoutLogs() {
   const db = await createDB();
   const tx = db.transaction("workoutLogs", "readonly");
   const store = tx.objectStore("workoutLogs");
@@ -179,7 +177,7 @@ async function deleteWorkoutLog(id){
 
 
 //Load workout log with transaction
-async function loadWoroutLog(){
+export async function loadWoroutLog(){
   const db = await createDB();
 
   const workoutLogContainer = document.querySelector(".workoutLogs");

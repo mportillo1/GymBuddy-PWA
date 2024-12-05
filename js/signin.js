@@ -1,12 +1,14 @@
-import { auth } from "./firebaseConfig.js";
+import { auth, db } from "./firebaseConfig.js";
 
   import { 
     createUserWithEmailAndPassword, 
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    updateProfile
   } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
+  import { doc,setDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -29,10 +31,20 @@ import { auth } from "./firebaseConfig.js";
 
 
   SignUpBtn.addEventListener("click", async () => {
+      const name = "Anon"
       const email = document.getElementById("sign-up-email").value;
       const password = document.getElementById("sign-up-password").value;
       try{
-        await createUserWithEmailAndPassword(auth, email, password);
+        const authCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(authCredential.user, {
+          displayName: name,
+        });
+        const docRef = doc(db, "users", authCredential.user.uid);
+        const userProperties = await setDoc(docRef, {
+          email: email,
+          name: name,
+        });
+        console.log(userProperties);
         M.toast({html: "Sign up successful!"});
         window.location.href = "/";
         signUpForm.style.display = "none";

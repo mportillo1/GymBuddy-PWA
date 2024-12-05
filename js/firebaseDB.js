@@ -1,8 +1,10 @@
-  import { db } from "./firebaseConfig.js";
+import { currentUser } from "./auth.js";
+import { db } from "./firebaseConfig.js";
   // Import the functions you need from the SDKs you need
   import {
     collection,
     addDoc,
+    setDoc,
     getDocs,
     deleteDoc,
     updateDoc,
@@ -11,29 +13,33 @@
   //Add a workout
   export async function addWorkoutLogToFirebase(workoutLog){
     try{
-        const docRef = await await addDoc(collection(db, "workoutLog"), workoutLog);
-        return { id: docRef.id, ...workoutLog};
+      console.log(currentUser);
+      if(!currentUser){
+        throw new Error("user is not authenticated");
+      }
+      const userId = currentUser.uid;
+      console.log("userID: ", userId);
+      const userRef = doc(db, "users", userId);
+      await setDoc(userRef, {email: currentUser.email}, {merge: true});
+      const workoutLogRef = collection(userRef, "workoutLog");
+      const docRef = await addDoc(workoutLogRef, workoutLog)
+      // const docRef = await await addDoc(collection(db, "workoutLog"), workoutLog);
+      return { id: docRef.id, ...workoutLog};
     } catch(e){
         console.error("Error adding workout log: ", e);
     }
   }
 
-  const workoutLogTest = {
-    workoutName: "Squat",
-    workoutDescription: "Legs",
-    workoutDate: "Nov 18, 2024",
-    weight: "140lbs",
-    repetitions: 30,
-    difficulty: "Hard"
-  }
-
-//   addWorkoutLogToFirebase(workoutLogTest);
-
   //Get workout
   export async function getWorkoutLogFromFirebase() {
     const workoutLogs = [];
     try {
-      const querySnapshot = await getDocs(collection(db, "workoutLog"));
+      if(!currentUser){
+        throw new Error("user is not authenticated");
+      }
+      const userId = currentUser.uid;
+      const workoutLogRef = collection(doc(db, "users", userId), "workoutLog");
+      const querySnapshot = await getDocs(workoutLogRef);
       querySnapshot.forEach((doc) => {
         workoutLogs.push({ id: doc.id, ...doc.data() });
       });
@@ -46,7 +52,11 @@
   //Delete workout
 export async function deleteWorkoutLogFromFirebase(id) {
   try {
-    await deleteDoc(doc(db, "workoutLog", id));
+    if(!currentUser){
+      throw new Error("user is not authenticated");
+    }
+    const userId = currentUser.uid;
+    await deleteDoc(doc(db, "users", userId, "workoutLog", id));
   } catch (e) {
     console.error("Error deleting workout log: ", e);
   }
@@ -56,7 +66,11 @@ export async function deleteWorkoutLogFromFirebase(id) {
   export async function updateWorkoutLogInFirebase(id, updatedData) {
     console.log(updatedData, id);
     try {
-      const workoutRef = doc(db, "workoutLog", id);
+      if(!currentUser){
+        throw new Error("user is not authenticated");
+      }
+      const userId = currentUser.uid;
+      const workoutRef = doc(db, "users", userId, "workoutLog", id);
       await updateDoc(workoutRef, updatedData);
     } catch (e) {
       console.error("Error updating workout log: ", e);

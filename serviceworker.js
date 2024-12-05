@@ -1,17 +1,16 @@
-const CACHE_NAME = "task-manager-v4";
+const CACHE_NAME = "task-manager-v6";
 
 const ASSETS_TO_CACHE = [
     "/",
     "/index.html",
     "/excercises.html",
     "/log.html",
-    "/serviceworker.js",
+    "/auth.html",
     "/css/materialize.min.css",
     "/css/style.css",
     "/js/materialize.min.js",
     "/js/ui.js",
-    "/js/firebaseDB.js",
-    "/js/jquery-3.7.1.min.js",
+    "/js/init.js",
     "/img",
 
 ];

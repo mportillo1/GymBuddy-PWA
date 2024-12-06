@@ -35,16 +35,13 @@ import { auth, db } from "./firebaseConfig.js";
       const email = document.getElementById("sign-up-email").value;
       const password = document.getElementById("sign-up-password").value;
       try{
-        const authCredential = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(authCredential.user, {
-          displayName: name,
-        });
+        const authCredential = await createUserWithEmailAndPassword(
+          auth, 
+          email, 
+          password);
         const docRef = doc(db, "users", authCredential.user.uid);
-        const userProperties = await setDoc(docRef, {
-          email: email,
-          name: name,
-        });
-        console.log(userProperties);
+        await setDoc(docRef, {email: email});
+        // console.log(userProperties);
         M.toast({html: "Sign up successful!"});
         window.location.href = "/";
         signUpForm.style.display = "none";

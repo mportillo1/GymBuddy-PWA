@@ -39,10 +39,13 @@ import { db } from "./firebaseConfig.js";
       }
       const userId = currentUser.uid;
       const workoutLogRef = collection(doc(db, "users", userId), "workoutLog");
+      // console.log(workoutLogRef);
       const querySnapshot = await getDocs(workoutLogRef);
+      // console.log("testing 2");
       querySnapshot.forEach((doc) => {
         workoutLogs.push({ id: doc.id, ...doc.data() });
       });
+      // console.log("testing 3");
     } catch (e) {
       console.error("Error retrieving workout log: ", e);
     }

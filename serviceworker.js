@@ -1,3 +1,30 @@
+importScripts("https://www.gstatic.com/firebasejs/11.0.2/firebase-app-compat.js");
+importScripts("https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging-compat.js")
+
+firebase.initializeApp({
+  apiKey: "AIzaSyCGTSjtfdXv5NIgNUIwsY3YNxLvh677Dh0",
+  authDomain: "gymbuddy-ff2f1.firebaseapp.com",
+  projectId: "gymbuddy-ff2f1",
+  storageBucket: "gymbuddy-ff2f1.firebasestorage.app",
+  messagingSenderId: "434342779104",
+  appId: "1:434342779104:web:c9325c6e05ec5800fc5885",
+  measurementId: "G-NL86WH6J3L"
+});
+
+const messaging = firebase.messaging();
+
+//Handle background messages
+messaging.onBackgroundMessage(function (payload){
+  console.log("[serviceworker.js] Received background message ", payload);
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: "/img/icons/GymBuddyIcon128.png"
+  };
+
+  self.ServiceWorkerRegistration.showNotification(notificationTitle, notificationOptions);
+});
+
 const CACHE_NAME = "task-manager-v6";
 
 const ASSETS_TO_CACHE = [
@@ -110,5 +137,27 @@ self.addEventListener("fetch", (event) => {
           );
         })
       );
+    }
+  });
+
+
+  //Listen for messages from ui.js
+  self.addEventListener("message", (event) => {
+    if(event.data && event.data.type === "FCM_TOKEN"){
+      const fcmToken = event.data.token;
+      console.log("Received FCM token in service worker: ", fcmToken);
+    }
+  });
+
+  //Display notification for the background message
+  self.addEventListener("push", (event) => {
+    if(event.data){
+      const payload = event.data.json();
+      const { title, body, icon} = payload.notification;
+      const options = {
+        body,
+        icon: icon || "/img/icons/GymBuddyIcon128.png",
+      };
+      event.waitUntil(self.registration.showNotification(title, options));
     }
   });

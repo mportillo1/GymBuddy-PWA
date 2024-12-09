@@ -1,19 +1,19 @@
 import { currentUser } from "./auth.js";
 import { db } from "./firebaseConfig.js";
   // Import the functions you need from the SDKs you need
-  import {
+import {
     collection,
     addDoc,
     setDoc,
     getDocs,
     deleteDoc,
     updateDoc,
-    doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+    doc 
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
   //Add a workout
   export async function addWorkoutLogToFirebase(workoutLog){
     try{
-      console.log(currentUser);
       if(!currentUser){
         throw new Error("user is not authenticated");
       }

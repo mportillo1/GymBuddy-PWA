@@ -5,6 +5,16 @@ import {
   deleteWorkoutLogFromFirebase,
   updateWorkoutLogInFirebase,
 } from "./firebaseDB.js";
+import {
+  collection,
+  addDoc,
+  doc 
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { messaging, getToken, onMessage, db } from "./firebaseConfig.js";
+import { currentUser } from "./auth.js";
+
+// ---Constants---
+let serviceWorkerRegistration = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     checkStorageUsage();
@@ -32,6 +42,7 @@ async function addWorkoutLog(workoutLog){
 
   if (navigator.onLine) {
     // Online - Add workout to Firebase and get the Firebase ID
+    console.log("Online")
     const savedWorkoutLog = await addWorkoutLogToFirebase(workoutLog);
     workoutLogId = savedWorkoutLog.id;
 
@@ -212,8 +223,8 @@ export async function loadWoroutLog(){
 function displayWorkoutLog(workoutLog){
   const workoutLogContainer = document.querySelector(".workoutLogs");
   const oneSetHtml = `
-  <div class="row" data-id="${workoutLog.id}">
-        <div class="col s12 m4" >
+  
+        <div class="col s12 m4" data-id="${workoutLog.id}">
             <div class="card">
             <div class="col s12" >
                 <span class="card-title workout-name">${workoutLog.workoutName}</span>
@@ -252,7 +263,7 @@ function displayWorkoutLog(workoutLog){
             </div>
             </div>
             </div>
-            </div>`
+            `
   
   workoutLogContainer.insertAdjacentHTML("beforeend", oneSetHtml);
 
@@ -279,16 +290,6 @@ addWorkoutButton.addEventListener("click", async () => {
   const weightInput = document.querySelector("#weight");
   const difficultyInput = document.querySelector("#difficulty");
   const workoutLogIdInput = document.querySelector("#workoutLog-id");
-
-  //Theres a know issue with Materialize CSS and their getSelectedValues() where it returns previous value
-  // const selectOption = document.querySelector('#diffSelect');
-  // const selInstance = M.FormSelect.getInstance(selectOption);
-  // var selectedValues = selInstance.getSelectedValues()[0];
-
-  // if(selectedValues == ""){
-  //   selectedValues = "Not working or Empty";
-  // }
-
   
   const workoutLogId = workoutLogIdInput.value; // If editing, this will have a value
   const workoutLogData = {
@@ -413,6 +414,46 @@ async function checkStorageUsage(){
   }
 }
 
+async function initNotificationPermission(){
+  try{
+    const permission = await Notification.requestPermission();
+    if (permission === "granted"){
+      if(!serviceWorkerRegistration){
+        serviceWorkerRegistration = await navigator.serviceWorker.ready;
+      }
+      const token = await getToken(messaging, {
+        vapidKey: "BDsf28H4id-7wqodCie5wshUs3daR2pMGgWYtLfOvHCH_G1Fb1cg8uTA5JD0sUCEH3HHltBf7bMIHB6pNQlV80U",
+        serviceWorkerRegistration: serviceWorkerRegistration
+      });
+      console.log("FCM Token: ", token);
+      if(token && currentUser){
+        const userRef = doc(db, "users", currentUser.uid);
+        const tokeRef = collection(userRef, "fcmTokens");
+        await addDoc(tokeRef, {token: token});
+        console.log("Token saved to FireStore");
+      } else{
+        console.log("No valid user or token found!");
+      }
+    } else{
+      console.log("Notification permission denied");
+    }
+  }catch(e){
+    console.error("Error requesting notification permission: ", e);
+  }
+}
+
+
+onMessage(messaging, (payload) => {
+  console.log("Message received. ", payload);
+  const notificationTitle = payload.notification.title;
+  const notificationOptions = {
+    body: payload.notification.body,
+    icon: "/img/icons/GymBuddyIcon128.png"
+  };
+  new Notification(notificationTitle, notificationOptions);
+});
+
 // Event listener to detect online status and sync
 window.addEventListener("online", syncWorkoutLogs);
 window.addEventListener("online", loadWoroutLog);
+window.initNotificationPermission = initNotificationPermission;

@@ -62,10 +62,10 @@
             <!-- Modal Trigger -->
             <a href="#track" class="waves-effect waves-light btn light-blue darken-4 modal-trigger"><i class="material-icons left">playlist_add</i>Track a Workout</a>
             <br>
-            <br>           
+            <a onclick="initNotificationPermission()" class="waves-effect waves-light btn green darken-4" style="margin-top: 10px;"><i class="material-icons left">notifications</i>Enable Notifications</a>         
             <br>    
-            <div class="container workoutLogs" >
-            <div class="row">
+            <div class="container " >
+            <div class="row workoutLogs">
                 <div class="col s12 m4">
                   <div class="card">
                     <!-- <div class="col s12" >
@@ -160,26 +160,8 @@
                             <input placeholder="Easy" id="difficulty" type="text" class="validate">
                         </div>
                         <input type="hidden" id="workoutLog-id" />
-                        <!-- <div class="input-field col s4">
-                            <div class="input-field col s12">
-                                <select id="diffSelect" class="difficultySelect">
-                                  <option value="" disabled selected></option>
-                                  <option value="Easy">Easy</option>
-                                  <option value="Medium">Medium</option>
-                                  <option value="Hard">Hard</option>
-                                  <option value="Max Effort">Max Effort</option>
-                                  <option value="Failed">Failed</option>
-                                </select>                        
-                            </div>
-                        </div> -->
                     </div>
-                    
 
-                    <!-- <div class="row center-align">
-                        <div class="col s12">
-                            <a href="#add" class="center-align waves-effect waves-light btn  purple lighten-2 modal-trigger">Add Set</a>
-                        </div>
-                    </div> -->
                     <div class="row center-align">
                         <div class="col s12">
                             <a href="#add" class="center-align waves-effect waves-light btn light-blue darken-4" id="form-action-btn">Add Excercise</a>
@@ -187,7 +169,7 @@
                     </div>
                     <div class="row center-align">
                         <div class="col s12">
-                            <a href="#!" class="modal-close waves-effect waves-green green white-text btn-flat">Finish</a>
+                            <a href="#!" class="modal-close waves-effect waves-green green darken-4 white-text btn-flat">Finish</a>
                         </div>
                     </div>
             </div>
@@ -220,7 +202,6 @@
     </main>
     <script src="js\jquery-3.7.1.min.js" ></script>
     <script src="js\materialize.min.js"></script>
-    <script src="js\workoutCard.js"></script>
     <script type="module" src="js\init.js"></script>
     <script type="module" src="js\ui.js"></script>
     <script type="module" src="js\firebaseDB.js"></script>

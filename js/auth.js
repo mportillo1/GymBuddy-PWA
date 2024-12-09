@@ -11,7 +11,6 @@ export let currentUser = null;
 
 document.addEventListener("DOMContentLoaded", () => {
     const logoutBtns = document.querySelectorAll(".logout-btn");
-    console.log(logoutBtns);
     onAuthStateChanged(auth, (user) => {
         if(user){
           //User is signed in

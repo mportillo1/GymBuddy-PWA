@@ -38,7 +38,7 @@ nav ul a:hover{
 }
 
 .table-responsive2{
-    display: inline-block;
+    /* display: inline-block; */
     /* width: 100%; */
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -206,6 +206,15 @@ nav ul a:hover{
 }
 
 /*==================================================
+    Log-in Sing Up Section
+==================================================*/
+
+.singinup{
+    color: white;
+}
+
+
+/*==================================================
     Media Queries
 ==================================================*/
 @media(min-width:1200px){
@@ -266,11 +275,8 @@ nav ul a:hover{
     .workout-icon{
         max-height: 5rem;
     }
-
-
-    /* ::-webkit-scrollbar { display: none; } */
-    
 }
+
 
 
 @media (max-width:767px) {

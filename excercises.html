@@ -28,7 +28,7 @@
                 <!-- Navbar links for large screens -->
                 <ul class="right hide-on-med-and-down">
                     <li><a href="index.html" class="waves-effect white-text">Home</a></li>
-                    <li><a href="log.html" class="waves-effect white-text">Workout Log</a></li>
+                    <li><a href="log.html" class="waves-effect white-text">Workout Tracker</a></li>
                     <li><a href="excercises.html" class="waves-effect white-text">Exercise Database</a></li>
                     <li><a href="#" class="waves-effect white-text logout-btn" style="display: none">Logout</a></li>
                     <!-- <li><a href="/pages/contact.html" class="waves-effect white-text">Contact</a></li> -->
@@ -41,40 +41,20 @@
         <ul class="sidenav" id="mobile-menu">
             <li><a href="/" class="subheader">Workout Tracker</a></li>
             <li><a href="index.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">home_outline</i>Home</a></li>
-            <li><a href="log.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">playlist_add</i>Workout Log</a></li>
+            <li><a href="log.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">playlist_add</i>Workout Tracker</a></li>
             <li><a href="excercises.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">fitness_center</i>Exercise Database</a></li>
             <li><a href="#" class="waves-effect grey-text text-darken-4 logout-btn" style="display: none"><i class="material-icons">person_outline</i>Logout</a></li>
             <!-- <li><a href="/pages/contact.html" class="waves-effect grey-text text-darken-4"><i class="material-icons">mail_outline</i> Contact</a></li> -->
         </ul>
     </aside>
 
+
+
     <main class="left-align">
         <section class="hero">
             <div class="hero-content exercise-banner">
-            </div>
-    
+            </div>    
         </section>
-
-        <!-- <div class="container">
-            <h1 >Exercises</h1>
-            <p>A</p>
-            <div class="divider"></div>
-            <div class="section">
-                <img class="exercise-img" src="img/upper.png">
-              <h5>Arnold Press</h5>
-              <p>Shoulders</p>
-            </div>
-            <div class="divider"></div>
-            <div class="section">
-              <h5>Section 2</h5>
-              <p>Stuff</p>
-            </div>
-            <div class="divider"></div>
-            <div class="section">
-              <h5>Section 3</h5>
-              <p>Stuff</p>
-            </div>
-        </div> -->
 
         <div class="container">
             <div class="row">
@@ -82,8 +62,9 @@
                     <h1 >Exercise Database</h1>
                 </div>
             </div>
+
             <!-- A -->
-            <div class="row">
+            <div class="row" id="A">
                 <div class="col s12">
                     <p>A</p>
                 </div>
@@ -114,7 +95,7 @@
             </div>
             <br>
             <!-- B -->
-            <div class="row">
+            <div class="row" id="B">
                 <div class="col s12">
                     <p>B</p>
                 </div>
@@ -157,7 +138,7 @@
             </div>
             <br>
             <!-- C -->
-            <div class="row">
+            <div class="row" id="C">
                 <div class="col s12">
                     <p>C</p>
                 </div>
@@ -213,7 +194,7 @@
 
             <br>
             <!-- D -->
-            <div class="row">
+            <div class="row" id="D">
                 <div class="col s12">
                     <p>D</p>
                 </div>
@@ -245,7 +226,7 @@
             <br>
 
             <!-- E -->
-            <div class="row">
+            <div class="row" id="E">
                 <div class="col s12">
                     <p>E</p>
                 </div>
@@ -265,7 +246,7 @@
             <br>
 
             <!-- F -->
-            <div class="row">
+            <div class="row" id="F">
                 <div class="col s12">
                     <p>F</p>
                 </div>
@@ -309,7 +290,7 @@
             <br>
 
             <!-- G -->
-            <div class="row">
+            <div class="row" id="G">
                 <div class="col s12">
                     <p>G</p>
                 </div>
@@ -335,6 +316,622 @@
                     <div class="col s8 m10 offset-m1">
                         <h5>Good Morning</h5>
                         <p>Back</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+             <!-- H -->
+            <div class="row" id="H">
+                <div class="col s12">
+                    <p>H</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Hack Squat</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Hammer Curls</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/mid.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Hanging Leg Raises</h5>
+                        <p>Core</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Hip Thrust</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- I -->
+            <div class="row" id="I">
+                <div class="col s12">
+                    <p>I</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/chest.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Incline Bench Press</h5>
+                        <p>Chest</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/chest.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Incline Chest Fly</h5>
+                        <p>Chest</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Incline Curl</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/back.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Incline Row</h5>
+                        <p>Back</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+             <!-- J -->
+             <div class="row" id="J">
+                <div class="col s12">
+                    <p>J</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/cardio.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Jump Rope</h5>
+                        <p>Cardio</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Jump Squat</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+            <!-- K -->
+             <div class="row" id="K">
+                <div class="col s12">
+                    <p>K</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/mid.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Knee Raise</h5>
+                        <p>Core</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/back.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Back</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- L -->
+             <div class="row" id="L">
+                <div class="col s12">
+                    <p>L</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/back.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Lat Pulldown</h5>
+                        <p>Back</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Lateral Raises</h5>
+                        <p>Shoulders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Leg Press</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Lying Leg Curls</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+
+              <!-- M -->
+             <div class="row" id="M">
+                <div class="col s12">
+                    <p>M</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Muscle Up</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+             <!-- O -->
+             <div class="row" id="O">
+                <div class="col s12">
+                    <p>O</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/mid.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Oblique Crunch</h5>
+                        <p>Core</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Overhead Press</h5>
+                        <p>Shoulders</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+             <!-- P -->
+             <div class="row" id="P">
+                <div class="col s12">
+                    <p>P</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/chest.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Peck Deck</h5>
+                        <p>Chest</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Pistol Squat</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/mid.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Plank</h5>
+                        <p>Core</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/back.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Pull Up</h5>
+                        <p>Back</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/chest.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Push Up</h5>
+                        <p>Chest</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+             <!-- R -->
+             <div class="row" id="P">
+                <div class="col s12">
+                    <p>R</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Reverse Curl</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Reverse Fly</h5>
+                        <p>Shoulders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Romanian Deadlift</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/cardio.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Running</h5>
+                        <p>Cardio</p>
+                    </div>
+                </div>
+            </div>        
+            <br>
+
+             <!-- S -->
+             <div class="row" id="P">
+                <div class="col s12">
+                    <p>S</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Seated Calf Raises</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Seated Overhead Press</h5>
+                        <p>Shoulders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Shrug</h5>
+                        <p>Shoulders</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/mid.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Situp</h5>
+                        <p>Core</p>
+                    </div>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/lower.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Squat</h5>
+                        <p>Legs</p>
+                    </div>
+                </div>
+            </div>         
+            <br>
+
+            <!-- T -->
+             <div class="row" id="P">
+                <div class="col s12">
+                    <p>T</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Tricep Dip</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Tricep Extension</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Tricep Pushdown</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>  
+            <br>
+
+             <!-- U -->
+             <div class="row" id="P">
+                <div class="col s12">
+                    <p>U</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/upper.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Upright Row</h5>
+                        <p>Arms</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- V -->
+             <div class="row" id="P">
+                <div class="col s12">
+                    <p>V</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/mid.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>V Up</h5>
+                        <p>Core</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            
+            <!-- W -->
+            <div class="row" id="P">
+                <div class="col s12">
+                    <p>W</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/cardio.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Walking</h5>
+                        <p>Cardio</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/back.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Wide Pull Up</h5>
+                        <p>Back</p>
+                    </div>
+                </div>
+            </div>
+            <br>
+            
+            <!-- Y -->
+            <div class="row" id="P">
+                <div class="col s12">
+                    <p>V</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="divider"></div>
+                <div class="section">
+                    <div class="col s4 m1">
+                        <img class="exercise-img" src="img/cardio.png">
+                    </div>
+                    <div class="col s8 m10 offset-m1">
+                        <h5>Yoga</h5>
+                        <p>Cardio</p>
                     </div>
                 </div>
             </div>

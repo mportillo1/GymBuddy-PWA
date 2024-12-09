@@ -2,6 +2,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { 
+  getMessaging, 
+  getToken,
+  onMessage,
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-messaging.js";
 
 
 
@@ -20,5 +25,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
+const messaging = getMessaging(app);
 
-export {db, auth};
+export {db, auth, messaging, getToken, onMessage};

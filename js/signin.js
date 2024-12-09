@@ -43,7 +43,7 @@ import { auth, db } from "./firebaseConfig.js";
         await setDoc(docRef, {email: email});
         // console.log(userProperties);
         M.toast({html: "Sign up successful!"});
-        window.location.href = "/";
+        window.location.href = "/log.html";
         signUpForm.style.display = "none";
         signInForm.style.display = "block";
       }
@@ -58,7 +58,7 @@ import { auth, db } from "./firebaseConfig.js";
       try{
         await signInWithEmailAndPassword(auth, email, password);
         M.toast({html: "Sign in successful!"});
-        window.location.href = "/";
+        window.location.href = "/log.html";
       }
       catch(e){
         M.toast({html: e.message});

@@ -70,75 +70,39 @@ self.addEventListener('activate', (event) =>{
     );
 });
 
-
-// self.addEventListener("fetch", (event) => {
-//     event.respondWith(
-//         (async function(){
-//             const cachedResponse = await caches.match(event.request);
-
-//             if(cachedResponse){
-//                 return cachedResponse;
-//             }
-
-//             try{
-//                 const networkResponse = await fetch(event.request);
-//                 const cache = await caches.open(CACHE_NAME);
-//                 cache.put(event.request, networkResponse.clone()); //Update cache with the fetched response
-//                 return networkResponse;
-//             } catch(error){
-//                 console.error("Fetch failed, returning offline page: ", error);
-//                 //Optionally return an offline page here if available in the cache
-//             }
-//         })()
-//     );
-// });
-
-
-
-
-//Fetch
-// self.addEventListener("fetch", (event) => {
-//     console.log("Service Worker: Fetching...", event.request.url);
-//     event.respondWith(
-//         caches.match(event.request).then((cachedResponse) => {
-//             if(cachedResponse){
-//                 return cachedResponse;
-//             }
-
-//             return fetch(event.request).then((networkResponse) => {
-//                 return caches.open(CACHE_NAME).then((cache) => {
-//                     cache.put(event.request, networkResponse.clone());
-//                     return networkResponse;
-//                 })
-//             })
-//         })
-//     );
-// });
-
-
 self.addEventListener("fetch", (event) => {
-    if (event.request.method === "GET") {
-      // Only handle GET requests
+  if (event.request.method === "GET") {
+      const url = new URL(event.request.url);
+
+      // Check if the request is for ping.json
+      if (url.pathname === "/ping.json") {
+          // Directly fetch without caching for ping.json
+          event.respondWith(fetch(event.request));
+          return; // Exit early to avoid further processing
+      }
+
+      // Handle other GET requests
       event.respondWith(
-        caches.match(event.request).then((cachedResponse) => {
-          return (
-            cachedResponse ||
-            fetch(event.request)
-              .then((networkResponse) => {
-                return caches.open(CACHE_NAME).then((cache) => {
-                  cache.put(event.request, networkResponse.clone());
-                  return networkResponse;
-                });
-              })
-              .catch((error) => {
-                console.error("Network fetch failed:", error);
-                // Optionally, return a fallback offline page if desired
-              })
-          );
-        })
+          caches.match(event.request).then((cachedResponse) => {
+              return (
+                  cachedResponse ||
+                  fetch(event.request)
+                      .then((networkResponse) => {
+                          return caches.open(CACHE_NAME).then((cache) => {
+                              cache.put(event.request, networkResponse.clone());
+                              return networkResponse;
+                          });
+                      })
+                      .catch((error) => {
+                          console.error("Network fetch failed:", error);
+                          // Optionally, return a fallback offline page if desired
+                      })
+              );
+          })
       );
-    }
-  });
+  }
+});
+
 
 
   //Listen for messages from ui.js

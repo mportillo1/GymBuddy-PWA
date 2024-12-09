@@ -34,13 +34,27 @@ const db = await openDB("GymBuddy", 1, {
 return db;
 }
 
+//Checks to see if there is an internet connection
+async function isReallyOnline() {
+  try {
+      const response = await fetch("./ping.json", { cache: "no-store" }); // Adjust path if ping.json is in a subfolder
+      if (response.ok) {
+          const data = await response.json();
+          return data.status === "ok";
+      }
+      return false;
+  } catch (error) {
+      console.error("Error checking online status:", error);
+      return false;
+  }
+}
 
 //Add workout Log
 async function addWorkoutLog(workoutLog){
   const db = await createDB();
   let workoutLogId;
-
-  if (navigator.onLine) {
+  const onlineStatus = await isReallyOnline();
+  if (onlineStatus) {
     // Online - Add workout to Firebase and get the Firebase ID
     console.log("Online")
     const savedWorkoutLog = await addWorkoutLogToFirebase(workoutLog);
@@ -82,10 +96,10 @@ async function editWorkoutLog(id, updatedData){
     console.error("InvalidID passed to Edit WorkoutLog");
     return;
   }
-
+  console.log("Inside edit: ID: ", id);
   const db = await createDB();
-
-  if (navigator.onLine) {
+  const onlineStatus = await isReallyOnline();
+  if (onlineStatus) {
     try{
       // Online - Edit workout to Firebase
       await updateWorkoutLogInFirebase(id, updatedData);
@@ -103,6 +117,7 @@ async function editWorkoutLog(id, updatedData){
     // Offline - make an indexedDB transaction
     const tx = db.transaction("workoutLogs", "readwrite");
     const store = tx.objectStore("workoutLogs");
+    console.log("ID in editWorkout function: ", id);
     await store.put({ ...updatedData, id: id, synced: false });
     await tx.done;
     loadWoroutLog();
@@ -120,7 +135,8 @@ export async function syncWorkoutLogs() {
   await tx.done; // Complete the transaction used to read workouts
 
   for (const workoutLog of workoutLogs) {
-    if (!workoutLog.synced && navigator.onLine) {
+    const onlineStatus = await isReallyOnline();
+    if (!workoutLog.synced && onlineStatus) {
       try {
         // Create a new workout object with only the fields needed for Firebase
         const workoutLogToSync = {
@@ -160,8 +176,9 @@ async function deleteWorkoutLog(id){
   }
 
   const db = await createDB();
+  const onlineStatus = await isReallyOnline();
   //Delete from firebase if online
-  if (navigator.onLine) {
+  if (onlineStatus) {
     await deleteWorkoutLogFromFirebase(id);
   }
 
@@ -193,9 +210,9 @@ export async function loadWoroutLog(){
 
   const workoutLogContainer = document.querySelector(".workoutLogs");
   workoutLogContainer.innerHTML = ""; // Clear current workout
-
+  const onlineStatus = await isReallyOnline();
     // Load workouts from Firebase if online
-    if (navigator.onLine) {
+    if (onlineStatus) {
       const firebaseWorkoutLogs = await getWorkoutLogFromFirebase();
       const tx = db.transaction("workoutLogs", "readwrite");
       const store = tx.objectStore("workoutLogs");
@@ -300,11 +317,12 @@ addWorkoutButton.addEventListener("click", async () => {
       weight: weightInput.value,
       difficulty: difficultyInput.value
   };
-
+  console.log(workoutLogId);
   if(!workoutLogId){
     const savedWorkoutLog = await addWorkoutLog(workoutLogData); // Add workout to IndexedDB
     displayWorkoutLog(savedWorkoutLog); // Add workout to the UI
   } else{
+    console.log("Found ID. editing...");
     await editWorkoutLog(workoutLogId, workoutLogData);
     loadWoroutLog();
   }  

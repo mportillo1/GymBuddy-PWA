@@ -6,7 +6,7 @@ import {
   signOut 
 } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 // Your web app's Firebase configuration
-import { loadWoroutLog, syncWorkoutLogs } from "./ui.js";
+import { loadWorkoutLog, syncWorkoutLogs } from "./ui.js";
 export let currentUser = null;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
           logoutBtns.forEach((logoutBtn) => {
               logoutBtn.style.display = "block";
           });
-          loadWoroutLog();
+          loadWorkoutLog();
           syncWorkoutLogs();
         } else{
             console.log("No user is currently signed in");

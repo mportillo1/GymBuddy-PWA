@@ -109,7 +109,7 @@ async function editWorkoutLog(id, updatedData){
       const store = tx.objectStore("workoutLogs");
       await store.put({ ...updatedData, id: id, synced: true });
       await tx.done;
-      loadWoroutLog();
+      loadWorkoutLog();
     } catch(e){
       console.error("Error updating workout in Firebase", e);
     }    
@@ -120,7 +120,7 @@ async function editWorkoutLog(id, updatedData){
     console.log("ID in editWorkout function: ", id);
     await store.put({ ...updatedData, id: id, synced: false });
     await tx.done;
-    loadWoroutLog();
+    loadWorkoutLog();
   }
 }
 
@@ -133,38 +133,48 @@ export async function syncWorkoutLogs() {
   // Fetch all unsynced workouts
   const workoutLogs = await store.getAll();
   await tx.done; // Complete the transaction used to read workouts
+  const onlineStatus = await isReallyOnline();
 
-  for (const workoutLog of workoutLogs) {
-    const onlineStatus = await isReallyOnline();
-    if (!workoutLog.synced && onlineStatus) {
-      try {
-        // Create a new workout object with only the fields needed for Firebase
-        const workoutLogToSync = {
+  for (const workoutLog of workoutLogs) {    
+  if (!workoutLog.synced && onlineStatus) {
+    try {
+      if (workoutLog.id.startsWith("temp-")) {
+        // Create a new entry in Firebase for temporary offline logs
+        const savedWorkoutLog = await addWorkoutLogToFirebase({
           workoutName: workoutLog.workoutName,
           workoutDescription: workoutLog.workoutDescription,
           workoutDate: workoutLog.workoutDate,
           repetitions: workoutLog.repetitions,
           weight: workoutLog.weight,
           difficulty: workoutLog.difficulty
-        };
+        });
 
-        // Send the workout to Firebase and get the new ID
-        const savedWorkoutLog = await addWorkoutLogToFirebase(workoutLogToSync);
-
-        // Replace temporary ID with Firebase ID and mark as synced
+        // Update IndexedDB with the Firebase ID
         const txUpdate = db.transaction("workoutLogs", "readwrite");
         const storeUpdate = txUpdate.objectStore("workoutLogs");
-
-        // Remove the temporary entry if it exists
-        await storeUpdate.delete(workoutLog.id);
-        // Add the updated workout with Firebase ID
-        await storeUpdate.put({ ...workoutLog, id: savedWorkoutLog.id, synced: true });
+        await storeUpdate.delete(workoutLog.id); // Remove temp ID entry
+        await storeUpdate.put({
+          ...workoutLog,
+          id: savedWorkoutLog.id,
+          synced: true
+        });
         await txUpdate.done;
+      } else {
+        // Update the existing Firebase entry
+        await updateWorkoutLogInFirebase(workoutLog.id, workoutLog);
+
+        // Mark as synced in IndexedDB
+        const txUpdate = db.transaction("workoutLogs", "readwrite");
+        const storeUpdate = txUpdate.objectStore("workoutLogs");
+        await storeUpdate.put({ ...workoutLog, synced: true });
+        await txUpdate.done;
+      }
       } catch (error) {
         console.error("Error syncing workout log:", error);
       }
     }
   }
+  
 }
 
 //Delete workout log
@@ -178,8 +188,16 @@ async function deleteWorkoutLog(id){
   const db = await createDB();
   const onlineStatus = await isReallyOnline();
   //Delete from firebase if online
+  // if (onlineStatus) {
+  //   await deleteWorkoutLogFromFirebase(id);
+  // }
+
   if (onlineStatus) {
-    await deleteWorkoutLogFromFirebase(id);
+    try {
+      await deleteWorkoutLogFromFirebase(id);
+    } catch (error) {
+      console.error("Error deleting log from Firebase:", error);
+    }
   }
 
    //start transaction
@@ -205,7 +223,7 @@ async function deleteWorkoutLog(id){
 
 
 //Load workout log with transaction
-export async function loadWoroutLog(){
+export async function loadWorkoutLog(){
   const db = await createDB();
 
   const workoutLogContainer = document.querySelector(".workoutLogs");
@@ -324,7 +342,7 @@ addWorkoutButton.addEventListener("click", async () => {
   } else{
     console.log("Found ID. editing...");
     await editWorkoutLog(workoutLogId, workoutLogData);
-    loadWoroutLog();
+    // loadWorkoutLog();
   }  
 
   // Clear input fields after adding
@@ -355,20 +373,20 @@ function openEditForm(id, workoutName, workoutDescription, workoutDate, repetiti
 
   M.updateTextFields(); // Materialize CSS form update
 
-  formActionButton.onclick = async () => {
-    const updatedWorkoutLog = {
-      workoutName: workoutNameInput.value,
-      workoutDescription: workoutDescriptionInput.value,
-      workoutDate: workoutDateInput.value,
-      repetitions: repetitionsInput.value,
-      weight: weightInput.value,
-      difficulty: difficultyInput.value
-    };
+  // formActionButton.onclick = async () => {
+  //   const updatedWorkoutLog = {
+  //     workoutName: workoutNameInput.value,
+  //     workoutDescription: workoutDescriptionInput.value,
+  //     workoutDate: workoutDateInput.value,
+  //     repetitions: repetitionsInput.value,
+  //     weight: weightInput.value,
+  //     difficulty: difficultyInput.value
+  //   };
 
-    await editWorkoutLog(id, updatedWorkoutLog);
-    // loadWoroutLog();
-    closeForm();
-  };
+  //   await editWorkoutLog(id, updatedWorkoutLog);
+  //   // loadWorkoutLog();
+  //   closeForm();
+  // };
 
   // Open the modal form
   var elem = document.querySelector("#track");
@@ -472,6 +490,8 @@ onMessage(messaging, (payload) => {
 });
 
 // Event listener to detect online status and sync
-window.addEventListener("online", syncWorkoutLogs);
-window.addEventListener("online", loadWoroutLog);
+window.addEventListener("online", async () => {
+  await syncWorkoutLogs(); // Ensure sync is completed first
+  await loadWorkoutLog();     // Then load the workout logs
+});
 window.initNotificationPermission = initNotificationPermission;

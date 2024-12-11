@@ -29,16 +29,16 @@ const CACHE_NAME = "workout-buddy-v1";
 
 const ASSETS_TO_CACHE = [
     "/",
-    "/index.html",
-    "/excercises.html",
-    "/log.html",
-    "/auth.html",
-    "/css/materialize.min.css",
-    "/css/style.css",
-    "/js/materialize.min.js",
-    "/js/ui.js",
-    "/js/init.js",
-    "/img",
+    "./index.html",
+    "./excercises.html",
+    "./log.html",
+    "./auth.html",
+    "./css/materialize.min.css",
+    "./css/style.css",
+    "./js/materialize.min.js",
+    "./js/ui.js",
+    "./js/init.js",
+    "./img",
 
 ];
 

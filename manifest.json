@@ -2,7 +2,7 @@
     "name": "GymBuddy",
     "short_name": "GM",
     "description": "Track your workouts and browse the exercise database with GymBuddy.",
-    "start_url": "/index.html",
+    "start_url": "./index.html",
     "scope": "/",
     "display": "standalone",
     "orientation": "portrait-primary",
@@ -11,42 +11,47 @@
     "lang": "en-US",
     "icons": [
         {
-            "src": "/img/icons/GymBuddyIcon512.png",
+            "src": "./img/icons/GymBuddyIcon512.png",
             "type": "image/png",
             "sizes": "512x512"
         },
         {
-            "src": "/img/icons/GymBuddyIcon384.png",
+            "src": "./img/icons/GymBuddyIcon384.png",
             "type": "image/png",
             "sizes": "384x384"
         },
         {
-            "src": "/img/icons/GymBuddyIcon256.png",
+            "src": "./img/icons/GymBuddyIcon256.png",
             "type": "image/png",
             "sizes": "256x256"
         },
         {
-            "src": "/img/icons/GymBuddyIcon128.png",
+            "src": "./img/icons/android-chrome-192x192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        },
+        {
+            "src": "./img/icons/GymBuddyIcon128.png",
             "type": "image/png",
             "sizes": "128x128"
         },
         {
-            "src": "/img/icons/GymBuddyIcon96.png",
+            "src": "./img/icons/GymBuddyIcon96.png",
             "type": "image/png",
             "sizes": "96x96"
         },
         {
-            "src": "/img/icons/GymBuddyIcon48.png",
+            "src": "./img/icons/GymBuddyIcon48.png",
             "type": "image/png",
             "sizes": "48x48"
         },
         {
-            "src": "/img/icons/GymBuddyIcon32.png",
+            "src": "./img/icons/GymBuddyIcon32.png",
             "type": "image/png",
             "sizes": "32x32"
         },
         {
-            "src": "/img/icons/GymBuddyIcon16.png",
+            "src": "./img/icons/GymBuddyIcon16.png",
             "type": "image/png",
             "sizes": "16x16"
         }
@@ -54,13 +59,13 @@
 
     "screenshots": [
         {
-            "src": "/img/screenshots/wideScreenshot.png",
+            "src": "./img/screenshots/wideScreenshot.png",
             "type": "image/png",
             "sizes": "1536x905",
             "form_factor": "wide"
         },
         {
-            "src": "/img/screenshots/mobileScreenshot.png",
+            "src": "./img/screenshots/mobileScreenshot.png",
             "type": "image/png",
             "sizes": "519x724"
         }
@@ -71,10 +76,10 @@
             "name": "Track Workout",
             "short_name": "Track",
             "description": "Quickly track a workout",
-            "url": "/log",
+            "url": "./log",
             "icons":[
                 {
-                    "src": "/img/screenshots/trackScreenshot.png",
+                    "src": "./img/screenshots/trackScreenshot.png",
                     "sizes": "499x909"
                 }
             ]
@@ -83,10 +88,10 @@
             "name": "Exercise Database",
             "short_name": "Database",
             "description": "Browse our excercise database",
-            "url": "/excercises",
+            "url": "./excercises",
             "icons":[
                 {
-                    "src": "/img/screenshots/databaseScreenshot.png",
+                    "src": "./img/screenshots/databaseScreenshot.png",
                     "sizes": "496x875"
                 }
             ]

@@ -38,7 +38,9 @@ const ASSETS_TO_CACHE = [
     "./js/materialize.min.js",
     "./js/ui.js",
     "./js/init.js",
-    "./img/"
+    "./img/",  // Cache all images in the root of the img directory
+    "./img/screenshots/", // Path to the screenshots folder
+    "./img/icons/", // Path to the icons folder
 ];
 
 //Install

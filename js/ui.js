@@ -96,7 +96,6 @@ async function editWorkoutLog(id, updatedData){
     console.error("InvalidID passed to Edit WorkoutLog");
     return;
   }
-  console.log("Inside edit: ID: ", id);
   const db = await createDB();
   const onlineStatus = await isReallyOnline();
   if (onlineStatus) {
@@ -117,7 +116,6 @@ async function editWorkoutLog(id, updatedData){
     // Offline - make an indexedDB transaction
     const tx = db.transaction("workoutLogs", "readwrite");
     const store = tx.objectStore("workoutLogs");
-    console.log("ID in editWorkout function: ", id);
     await store.put({ ...updatedData, id: id, synced: false });
     await tx.done;
     loadWorkoutLog();
@@ -127,54 +125,79 @@ async function editWorkoutLog(id, updatedData){
 //Sync workout from indeDB to firebaseDB
 export async function syncWorkoutLogs() {
   const db = await createDB();
-  const tx = db.transaction("workoutLogs", "readonly");
-  const store = tx.objectStore("workoutLogs");
-
-  // Fetch all unsynced workouts
-  const workoutLogs = await store.getAll();
-  await tx.done; // Complete the transaction used to read workouts
   const onlineStatus = await isReallyOnline();
 
-  for (const workoutLog of workoutLogs) {    
-  if (!workoutLog.synced && onlineStatus) {
-    try {
-      if (workoutLog.id.startsWith("temp-")) {
-        // Create a new entry in Firebase for temporary offline logs
-        const savedWorkoutLog = await addWorkoutLogToFirebase({
-          workoutName: workoutLog.workoutName,
-          workoutDescription: workoutLog.workoutDescription,
-          workoutDate: workoutLog.workoutDate,
-          repetitions: workoutLog.repetitions,
-          weight: workoutLog.weight,
-          difficulty: workoutLog.difficulty
-        });
+  if (!onlineStatus) return;
 
-        // Update IndexedDB with the Firebase ID
-        const txUpdate = db.transaction("workoutLogs", "readwrite");
-        const storeUpdate = txUpdate.objectStore("workoutLogs");
-        await storeUpdate.delete(workoutLog.id); // Remove temp ID entry
-        await storeUpdate.put({
-          ...workoutLog,
-          id: savedWorkoutLog.id,
-          synced: true
-        });
-        await txUpdate.done;
-      } else {
-        // Update the existing Firebase entry
-        await updateWorkoutLogInFirebase(workoutLog.id, workoutLog);
+  try {
+    // Start a transaction for reading workout logs from IndexedDB
+    const tx = db.transaction("workoutLogs", "readonly");
+    const store = tx.objectStore("workoutLogs");
+    const workoutLogs = await store.getAll();
+    await tx.done;
 
-        // Mark as synced in IndexedDB
-        const txUpdate = db.transaction("workoutLogs", "readwrite");
-        const storeUpdate = txUpdate.objectStore("workoutLogs");
-        await storeUpdate.put({ ...workoutLog, synced: true });
-        await txUpdate.done;
-      }
-      } catch (error) {
-        console.error("Error syncing workout log:", error);
+    // Sync new and edited logs
+    for (const workoutLog of workoutLogs) {
+      if (!workoutLog.synced) {
+        try {
+          if (workoutLog.id.startsWith("temp-")) {
+            // Add new log to Firebase
+            const savedWorkoutLog = await addWorkoutLogToFirebase({
+              workoutName: workoutLog.workoutName,
+              workoutDescription: workoutLog.workoutDescription,
+              workoutDate: workoutLog.workoutDate,
+              repetitions: workoutLog.repetitions,
+              weight: workoutLog.weight,
+              difficulty: workoutLog.difficulty,
+            });
+
+            // Update IndexedDB with Firebase ID
+            const txUpdate = db.transaction("workoutLogs", "readwrite");
+            const storeUpdate = txUpdate.objectStore("workoutLogs");
+            await storeUpdate.delete(workoutLog.id);
+            await storeUpdate.put({
+              ...workoutLog,
+              id: savedWorkoutLog.id,
+              synced: true,
+            });
+            await txUpdate.done;
+          } else {
+            // Update existing log in Firebase
+            await updateWorkoutLogInFirebase(workoutLog.id, workoutLog);
+
+            // Mark as synced in IndexedDB
+            const txUpdate = db.transaction("workoutLogs", "readwrite");
+            const storeUpdate = txUpdate.objectStore("workoutLogs");
+            await storeUpdate.put({ ...workoutLog, synced: true });
+            await txUpdate.done;
+          }
+        } catch (error) {
+          console.error("Error syncing workout log:", error);
+        }
       }
     }
+
+    // Fetch updated Firebase logs
+    const firebaseLogs = await getWorkoutLogFromFirebase();
+    const txFetch = db.transaction("workoutLogs", "readonly");
+    const storeFetch = txFetch.objectStore("workoutLogs");
+    const indexedDBKeys = await storeFetch.getAllKeys(); // Fetch all IndexedDB keys
+    await txFetch.done;
+
+    // Compare and delete logs in Firebase that are not in IndexedDB
+    for (const firebaseLog of firebaseLogs) {
+      if (!indexedDBKeys.includes(firebaseLog.id)) {
+        try {
+          await deleteWorkoutLogFromFirebase(firebaseLog.id);
+          console.log(`Deleted stale log from Firebase: ${firebaseLog.id}`);
+        } catch (error) {
+          console.error(`Error deleting stale log from Firebase: ${firebaseLog.id}`, error);
+        }
+      }
+    }
+  } catch (error) {
+    console.error("Error in syncWorkoutLogs:", error);
   }
-  
 }
 
 //Delete workout log
@@ -335,12 +358,11 @@ addWorkoutButton.addEventListener("click", async () => {
       weight: weightInput.value,
       difficulty: difficultyInput.value
   };
-  console.log(workoutLogId);
+  
   if(!workoutLogId){
     const savedWorkoutLog = await addWorkoutLog(workoutLogData); // Add workout to IndexedDB
     displayWorkoutLog(savedWorkoutLog); // Add workout to the UI
   } else{
-    console.log("Found ID. editing...");
     await editWorkoutLog(workoutLogId, workoutLogData);
     // loadWorkoutLog();
   }  

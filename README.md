@@ -1,11 +1,11 @@
 # GymBuddy PWA
 
 ## Overview
-GymBuddy is a progressive web application (PWA) designed to help users track their workouts and explore a built-in exercise database. The app enables users to log their exercises. Offline functionality is available.
+GymBuddy is a Progressive Web App designed to help users track and manage their workouts. It allows fitness enthusiasts to log exercises and access workout data both online and offline. The app integrates Firebase for secure sign-ins and data synchronization across devices, and uses IndexedDB and service workers to maintain functionality even when offline. The goal was to create a responsive, user-friendly tool that supports fitness tracking from any device, including features like daily reminders to help users stay on track with their fitness goals.
 
 ## Features
 - Log different types of workouts.
-- Track workout metrics such as sets, reps, weight lifted, and duration.
+- Track workout metrics such as sets, reps, weight lifted, and difficulty.
 - Browse an exercise database with exercises categorized by type.
 
 ## PWA Features
@@ -19,9 +19,13 @@ GymBuddy is a progressive web application (PWA) designed to help users track the
   - `background_color` and `theme_color` are set to match the app’s design.
   - `screenshots` offer previews of key app screens for a seamless install experience.
   - `shortcuts` provide quick links to essential features such as "Track Workout" and "Exercise Database."
-  - **Firebase Integration**:
+- **Firebase Database**:
   - Supports online data storage with Firestore or Realtime Database.
   - Ensures data consistency across sessions and devices.
+- **Firebase Messages**:
+  - Send daily reminder notifications to encourage consistent use of the app.
+- **Firebase Authentication**:
+  - Provide secure sign-in and sign-out for user accounts.
 - **IndexedDB Integration**:
   - Provides offline storage for workout logs.
   - Syncs with Firebase when an internet connection is restored.
@@ -33,10 +37,12 @@ GymBuddy is a progressive web application (PWA) designed to help users track the
    git clone https://github.com/mportillo1/WorkoutTracker.git
    
    
-## How to Test Firebase and IndexedDB
+## How to Use the App
  **Using the Workout Tracker**:
+    - **Sign In/Sign Out**:
+     - To sign in, you must first navigate to the Workout Log section of the app.
+     - From there, use the sign-in or sign-up option to access your account and manage your workout logs.
    - **Tracking a Workout**:
-     - Navigate to the Workout Tracker page.
      - Click on the **Track a Workout** button.
      - Fill in the required fields:
        - Select a date.
@@ -53,7 +59,10 @@ GymBuddy is a progressive web application (PWA) designed to help users track the
      - Navigate to the **Application** tab in the developer tools.
      - In the **Service Workers** section, set the network to **Offline**.
      - Perform actions such as adding, editing, or deleting a workout while offline.
-     - Switch back to **Online** mode and refresh the page to sync the changes with Firebase.
+     - Switch back to **Online** mode and to sync the changes with Firebase.
+  - **Enable Daily Notifications**:
+     - To receive daily reminder notifications, press the "Enable Notifications" button in the workout tracker section.
+     - Click "Allow" on the popup to grant permission for notifications.
 
 ## Technical Details
 - **Firebase Integration**:

@@ -18,7 +18,6 @@ import {
         throw new Error("user is not authenticated");
       }
       const userId = currentUser.uid;
-      console.log("userID: ", userId);
       const userRef = doc(db, "users", userId);
       await setDoc(userRef, {email: currentUser.email}, {merge: true});
       const workoutLogRef = collection(userRef, "workoutLog");
@@ -39,13 +38,10 @@ import {
       }
       const userId = currentUser.uid;
       const workoutLogRef = collection(doc(db, "users", userId), "workoutLog");
-      // console.log(workoutLogRef);
       const querySnapshot = await getDocs(workoutLogRef);
-      // console.log("testing 2");
       querySnapshot.forEach((doc) => {
         workoutLogs.push({ id: doc.id, ...doc.data() });
       });
-      // console.log("testing 3");
     } catch (e) {
       console.error("Error retrieving workout log: ", e);
     }
@@ -67,7 +63,6 @@ export async function deleteWorkoutLogFromFirebase(id) {
 
   //update workout
   export async function updateWorkoutLogInFirebase(id, updatedData) {
-    console.log(updatedData, id);
     try {
       if(!currentUser){
         throw new Error("user is not authenticated");

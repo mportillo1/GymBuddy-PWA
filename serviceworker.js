@@ -95,7 +95,6 @@ self.addEventListener("fetch", (event) => {
                       })
                       .catch((error) => {
                           console.error("Network fetch failed:", error);
-                          // Optionally, return a fallback offline page if desired
                       })
               );
           })

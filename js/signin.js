@@ -41,7 +41,6 @@ import { auth, db } from "./firebaseConfig.js";
           password);
         const docRef = doc(db, "users", authCredential.user.uid);
         await setDoc(docRef, {email: email});
-        // console.log(userProperties);
         M.toast({html: "Sign up successful!"});
         window.location.href = "/log.html";
         signUpForm.style.display = "none";

@@ -31,11 +31,6 @@
             "sizes": "192x192"
         },
         {
-            "src": "/img/icons/GymBuddyIcon144.png",
-            "type": "image/png",
-            "sizes": "144x144"
-        },
-        {
             "src": "/img/icons/GymBuddyIcon128.png",
             "type": "image/png",
             "sizes": "128x128"

@@ -26,11 +26,6 @@
             "sizes": "256x256"
         },
         {
-            "src": "/img/icons/android-chrome-192x192.png",
-            "type": "image/png",
-            "sizes": "192x192"
-        },
-        {
             "src": "/img/icons/GymBuddyIcon128.png",
             "type": "image/png",
             "sizes": "128x128"

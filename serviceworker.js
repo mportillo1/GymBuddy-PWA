@@ -25,7 +25,7 @@ messaging.onBackgroundMessage(function (payload){
   self.ServiceWorkerRegistration.showNotification(notificationTitle, notificationOptions);
 });
 
-const CACHE_NAME = "workout-buddy-v2";
+const CACHE_NAME = "workout-buddy-v3";
 
 const ASSETS_TO_CACHE = [
     "/",

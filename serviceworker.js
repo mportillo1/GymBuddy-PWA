@@ -28,7 +28,7 @@ messaging.onBackgroundMessage(function (payload){
 const CACHE_NAME = "workout-buddy-v3";
 
 const ASSETS_TO_CACHE = [
-    "/",
+    "./",
     "./index.html",
     "./excercises.html",
     "./log.html",
@@ -76,7 +76,7 @@ self.addEventListener("fetch", (event) => {
       const url = new URL(event.request.url);
 
       // Check if the request is for ping.json
-      if (url.pathname === "/ping.json") {
+      if (url.pathname === "./ping.json") {
           // Directly fetch without caching for ping.json
           event.respondWith(fetch(event.request));
           return; // Exit early to avoid further processing
@@ -120,7 +120,7 @@ self.addEventListener("fetch", (event) => {
       const { title, body, icon} = payload.notification;
       const options = {
         body,
-        icon: icon || "/img/icons/GymBuddyIcon128.png",
+        icon: icon || "./img/icons/GymBuddyIcon128.png",
       };
       event.waitUntil(self.registration.showNotification(title, options));
     }

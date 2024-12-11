@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
           syncWorkoutLogs();
         } else{
             console.log("No user is currently signed in");
-            window.location.href = "/auth.html"
+            window.location.href = "./auth.html"
         }
     });
 
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
           await signOut(auth);
           M.toast({html: "Logout successful!"});
           logoutBtn.style.display = "none";
-          window.location.href = "/index.html";
+          window.location.href = "./index.html";
         }
         catch(e){
           M.toast({html: e.message});

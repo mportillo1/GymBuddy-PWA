@@ -38,8 +38,7 @@ const ASSETS_TO_CACHE = [
     "./js/materialize.min.js",
     "./js/ui.js",
     "./js/init.js",
-    "./img",
-
+    "./img/"
 ];
 
 //Install

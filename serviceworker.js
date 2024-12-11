@@ -19,13 +19,13 @@ messaging.onBackgroundMessage(function (payload){
   const notificationTitle = payload.notification.title;
   const notificationOptions = {
     body: payload.notification.body,
-    icon: "/img/icons/GymBuddyIcon128.png"
+    icon: "./img/icons/GymBuddyIcon128.png"
   };
 
   self.ServiceWorkerRegistration.showNotification(notificationTitle, notificationOptions);
 });
 
-const CACHE_NAME = "workout-buddy-v4";
+const CACHE_NAME = "workout-buddy-v5";
 
 const ASSETS_TO_CACHE = [
     "./",
